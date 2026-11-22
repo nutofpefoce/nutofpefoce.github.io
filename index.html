@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rastreabilidade NUTOF</title>
+<meta name="description" content="Entrada do app de rastreabilidade de resultados do Núcleo de Toxicologia Forense (PEFOCE).">
+<!-- Ícones: o iPhone usa o apple-touch-icon para o atalho da Tela de Início -->
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icone-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icone-512.png">
+<meta name="apple-mobile-web-app-title" content="NUTOF">
+<meta name="theme-color" content="#005B4F">
+<!-- Esta página não guarda nem exibe dados: só leva ao app (login pefoce e lista de usuários continuam valendo lá). -->
+<style>
+:root{--verde:#00765E;--verde-esc:#005B4F;--tinta:#13261F;--cinza:#3F5650;--fundo:#F2F6F4;--borda:#D6E3DD}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--fundo);color:var(--tinta);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.5;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+header{background:linear-gradient(90deg,#00785F 0%,#12945A 60%,#2BA640 100%);color:#fff;padding:calc(env(safe-area-inset-top) + 28px) 20px 28px;text-align:center}
+.logo{width:88px;height:88px;border-radius:22px;box-shadow:0 6px 18px rgba(0,0,0,.18);display:block;margin:0 auto 14px}
+h1{margin:0;font-size:28px;font-weight:800;letter-spacing:.04em}
+.sub{margin:4px 0 0;font-size:15px;color:#E4F5EC;font-weight:600}
+main{flex:1;width:100%;max-width:480px;margin:0 auto;padding:28px 16px 32px;display:flex;flex-direction:column;gap:18px}
+.entrar{display:flex;align-items:center;justify-content:center;min-height:56px;border-radius:12px;background:var(--verde);color:#fff;
+  font-size:19px;font-weight:800;text-decoration:none;box-shadow:0 4px 12px rgba(0,118,94,.25)}
+.entrar:active{background:var(--verde-esc)}
+.entrar:focus-visible{outline:3px solid #2BA640;outline-offset:3px}
+.card{background:#fff;border:1px solid var(--borda);border-radius:12px;padding:16px 18px}
+.card h2{margin:0 0 8px;font-size:16px;color:#00473D}
+ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.nota{font-size:13px;color:var(--cinza);margin:0}
+footer{background:var(--verde-esc);color:#DDF0E7;font-size:13px;text-align:center;padding:14px 16px calc(env(safe-area-inset-bottom) + 14px)}
+@media (prefers-color-scheme:dark){
+  :root{--tinta:#E6F0EC;--cinza:#A9BDB6;--fundo:#0F1A16;--borda:#2A3B35}
+  .card{background:#16241F}.card h2{color:#8FD6BC}
+}
+</style>
+</head>
+<body>
+<header>
+  <img class="logo" src="apple-touch-icon.png" alt="Logomarca NUTOF" width="88" height="88">
+  <h1>NUTOF</h1>
+  <p class="sub">Rastreabilidade de resultados · PEFOCE</p>
+</header>
+
+<main>
+  <a class="entrar" id="entrar" href="https://script.google.com/a/macros/pefoce.ce.gov.br/s/AKfycbxoqHDhyN7eGD37AVljT5w_XjDVOj2beCSdWLzzSlatHqDKb8GKDCHoHLaOxllK1O6GFw/exec">Entrar</a>
+  <p class="nota" style="text-align:center">Use sua conta Google <b>@pefoce.ce.gov.br</b>.</p>
+
+  <section class="card" id="ajuda">
+    <h2>Criar o atalho com a logomarca</h2>
+    <ol>
+      <li><b>iPhone:</b> abra esta página no <b>Safari</b>, toque em <b>Compartilhar</b> (quadrado com seta) → <b>Adicionar à Tela de Início</b> → <b>Adicionar</b>.</li>
+      <li><b>Android:</b> no Chrome, toque em <b>⋮</b> → <b>Adicionar à tela inicial</b>.</li>
+      <li><b>Computador:</b> no Chrome, <b>⋮</b> → <b>Transmitir, salvar e compartilhar</b> → <b>Criar atalho</b>.</li>
+    </ol>
+  </section>
+</main>
+
+<footer>Perícia Forense do Estado do Ceará · Núcleo de Toxicologia Forense</footer>
+
+<script>
+// Aberta pelo atalho como "app" (tela cheia), o iPhone guarda o login separado do Safari.
+// Nesse caso o app abre no Safari, onde a pessoa já está logada na conta pefoce.
+(function () {
+  var standalone = window.navigator.standalone === true ||
+    (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+  if (standalone) {
+    var a = document.getElementById('entrar');
+    a.target = '_blank';
+    a.rel = 'noopener';
+    document.getElementById('ajuda').hidden = true;   // atalho já criado
+  }
+})();
+</script>
+</body>
+</html>
